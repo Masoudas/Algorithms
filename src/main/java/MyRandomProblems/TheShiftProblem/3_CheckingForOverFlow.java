@@ -1,4 +1,4 @@
-package Chapter1;
+package MyRandomProblems.TheShiftProblem;
 
 /*
  * How can we check that the result of multiplication, summation or other has not overflown in java?
@@ -18,13 +18,20 @@ class MultiplicationMySolution{
     public static void main(String[] args) {
         int x1 = 10;
         int x2 = 20;
+        System.out.println(16 >>> 3);
 
         System.out.println(getGreatesPowerUsingJava(1));
 
         int p1 = getGreatestPowerOfTwo(x1);
         int p2 = getGreatestPowerOfTwo(x2);
 
-        if ( p1 + p2 >= 32 ) System.out.println("overflow");
+        if ((p1 < 0 && p2 < 0) || (p1 > 0 && p2 > 0)) {
+            if ( p1 + p2 >= 32 ) System.out.println("overflow");
+        } else {
+            if ( p1 + p2 > 32 ) System.out.println("overflow");
+
+        }
+
     }
 
     /**
