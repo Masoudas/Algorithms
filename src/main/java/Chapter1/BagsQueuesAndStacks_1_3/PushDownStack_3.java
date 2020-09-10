@@ -18,7 +18,9 @@ import java.util.Stack;
  * 
  * Now, because we assumed we always have outer paranthesis, this code is correct. If we didn't,
  * which would imply we have expressions like 1+(2*3), then we'd have to empty stack one last time 
- * as well.
+ * as well. 
+ * 
+ * Note: We assume that the expression starts and ends with paranthesis.
  */
 class ExpressionCalculation{
     public static int calculateExpression(String str){
@@ -48,15 +50,6 @@ class ExpressionCalculation{
             }
         }    
         
-        if (!ops.empty()){
-            String op = ops.pop();
-                if (op == "+"){
-                    opr.push(opr.pop() + opr.pop());
-                } else if (op == "*")
-                {
-                    opr.push(opr.pop() * opr.pop());
-                }    
-        }
         
         return opr.pop();
     }
@@ -65,8 +58,8 @@ class ExpressionCalculation{
         System.out.println(calculateExpression("(1+1)"));
         System.out.println(calculateExpression("(1+(1+1))"));
         System.out.println(calculateExpression("(2*(1+1))"));
-        System.out.println(calculateExpression("2*(1+1)"));
-
+        System.out.println(calculateExpression("(2*(1+1))"));
+        System.out.println(calculateExpression("((1+1)*((1+1)*(1+1)))"));
     }
 
 }

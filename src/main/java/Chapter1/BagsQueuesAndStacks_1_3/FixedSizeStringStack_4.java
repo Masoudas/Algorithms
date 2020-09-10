@@ -3,11 +3,11 @@ package Chapter1.BagsQueuesAndStacks_1_3;
 /**
  * We attempt to implement a fixed size stack of string. Go down below.
  */
-public class FixedSizeStringStack {
+public class FixedSizeStringStack_4 {
     private String[] stack;
     private int index = 0;
 
-    public FixedSizeStringStack(int size){
+    public FixedSizeStringStack_4(int size){
         stack = new String[size];
     }
     
