@@ -26,6 +26,7 @@ class QuickFind implements UI{
     QuickFind(int N){
         id = new int[N];
 
+        
         IntStream.range(0, N).foreach(i -> id[i] = i);
         component = N;
     }
