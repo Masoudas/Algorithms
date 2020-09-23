@@ -7,6 +7,9 @@ import java.util.Stack;
  * element set in is returned first. The tabs on an internet browser is an
  * stack. Another example is the email stack.
  * 
+ * By stack underflow, we mean a situation where stack is empty, but an item is called for by the client.
+ * Stack overflow is when the stack is full, and can't allocate a new space.
+ * 
  * As another example, consider the expression ( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) )
  * ). How does Java calculate this expression? Suppose all values are between 0
  * to 9 and we don't have compound expressions like 1 + 2 * 3.
