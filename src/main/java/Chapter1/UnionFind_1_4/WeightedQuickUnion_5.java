@@ -6,11 +6,18 @@ package Chapter1.UnionFind_1_4;
  * if instead of saying 3->1->2, we say 1->3 and 1->2, then each node would be linked to its parent by
  * one link. Of course we still can have long branches, but still, the cost will come down.
  * 
- * Long branches are made, when two separate parents are still connected to one another. The goal
- * however as we said is to keep the tree height (or equivalently the depth of each node) as small as 
- * possible, which is why we always attach the smaller tree to the larger tree.
+ * So to remedy this, we keep the size of each tree (how many nodes it has). When we're about to connect
+ * to parents, we connect the smaller tree to the larger tree (making the parent of larger tree, the parent of the
+ * smaller tree).
  * 
+ * Question I: Why not keep track of tree depth rather than size?
  * 
+ * (Me: We should note that when a tree has depth N, it has size at least 2^N. To prove this by induction,
+ * suppose a tree has depth N-1 and at least 2^(N-1). Then to increase the depth of this tree by one, we need 
+ * to add another tree of size at least 2^N-1. Hence, we have at least 2^N elements for a tree of depth N.)
+ * 
+ * Question: What would be the maximum depth of a tree like this? The answer would be logN. We prove this
+ * by strong induction. 
  * 
  * To implement this schema, we define an array containing the depth of each node. Everytime a node is 
  * added, we add one to its depth.
