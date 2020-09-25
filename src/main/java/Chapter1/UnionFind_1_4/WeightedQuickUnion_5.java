@@ -12,12 +12,18 @@ package Chapter1.UnionFind_1_4;
  * 
  * Question I: Why not keep track of tree depth rather than size?
  * 
- * (Me: We should note that when a tree has depth N, it has size at least 2^N. To prove this by induction,
- * suppose a tree has depth N-1 and at least 2^(N-1). Then to increase the depth of this tree by one, we need 
- * to add another tree of size at least 2^N-1. Hence, we have at least 2^N elements for a tree of depth N.)
  * 
- * Question: What would be the maximum depth of a tree like this? The answer would be logN. We prove this
- * by strong induction. 
+ * Question I: Prove that the maximum depth of any node in a tree of size N is logN? Note that we say
+ * any node. However, if we prove this for the parent node, we're fine (because it's the deepest).
+ * It's pointless to answer this question using normal induction (from n node to n+1 node).
+ * Because suppose we use induction. If we add one node to a tree, it's size increases by one and logn remains.
+ * So, we need to show that a combination of two trees results in the proposition. Mor
+ * We need the strong induction argument. So suppose a tree has K and another has M nodes (K>=M), where K + M = N.
+ * Then adding these two together obviously increases the depth of M by one. However. log(M) + 1 <= log(M + M) <= log(M + K) <= logN.
+ * 
+ * 
+ * Hence in this schema, the cost of find is only logN.
+ * 
  * 
  * To implement this schema, we define an array containing the depth of each node. Everytime a node is 
  * added, we add one to its depth.

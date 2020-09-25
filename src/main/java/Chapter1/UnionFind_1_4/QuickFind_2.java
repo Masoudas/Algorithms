@@ -33,9 +33,11 @@ class QuickFind implements UI{
 
     @Override
     public void union(int p, int q) {
-        if (connected(p, q)){return;}
+        // If you're wondering why we're not directly using id[p] and id[q], see exercise 8. Boo Yah!
         int id_p = find(p);
         int id_q = find(q);
+
+        if (id_p == id_q)return;
 
         for (int i : id) {
             if (find(i) == id_q) id[i] = id_p;
@@ -46,7 +48,7 @@ class QuickFind implements UI{
 
     @Override
     public boolean connected(int p, int q) {
-        return id[p] == id[q];
+        return find(p) == find(q);
     }
 
     @Override

@@ -18,6 +18,10 @@ package Chapter1.UnionFind_1_4;
  * site, and a connection such as 1~2 a component. We define the following API (called Union Finder or UF):
  * 
  * In what follows, we asses a couple of ways of implementing the following API.
+ * 
+ * WE SHOULD NOT FORGET that if transitivity were not present, our only solution would have been to keep the
+ * connections one by one. Because in this scheme, if 1->2 and 2->3, then 1->3. If we didn't want this (and only
+ * wanted those exact relations), we should have kept them as pairs.
  */
 interface UI{
     // Constructor gets N.
