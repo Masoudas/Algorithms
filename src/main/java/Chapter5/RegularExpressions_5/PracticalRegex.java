@@ -29,10 +29,10 @@ package Chapter5.RegularExpressions_5;
  * 
  * [] - Matches chars set (For example [ab] means ONE Char matches a or b). There's no need to escape inside character set, because
  * why would you?! The expression knows that these are literals. If dash put at the start or end, it just
- * means dash, otherwise, a-z means range of from a to z.
+ * means dash, otherwise, a-z means range of from a to z. We can use special chars inside as well.
  * [^] - Not matches char set.
  * | - Either or
- * () Matches Group
+ * () Matches Group. We can use special chars inside as well.
  * 
  * Quantifiers:
  * * Zero or more
@@ -70,6 +70,20 @@ package Chapter5.RegularExpressions_5;
  * Write a pattern that matches the previous one together with Masoud-123@univ-amu.net?
  * Well, we can just add a dash and 0-9 to the first part and we're done. [a-zA-Z0-9.-]+@[a-zA-Z.]\.(com|fr|net).
  * Regular expressions for matching email addresses for example can be found over the internet. They're hard to write!
+ * 
+ * Write a regular expression that matches these urls?
+ * http://youtube.com
+ * https://www.youtube.com
+ * http://youtube.gov
+ * https://youtube.gov
+ * 
+ * It would be https?://(www.)?\w+\.\w+ . Although I should specify that I prefer a [a-zA-Z0-9_-] for the domain name.
+ * Now, we can use this just to get the .com or .gov (top level domain), and the domain name (which is youtube).
+ * So, each group of chars, the ones that are in paranthesis, has a group number starting from 1. We can usually access a group
+ * using a backslash (\1 for group 1 for example) or dollar sign ($2 for group two). WE CAN ONLY ACCESS THOSE GROUPS IN PARANTHESIS.
+ * We can use this to for example replace the entire string with just domain name and top level domain using \2\3, by defining the
+ * regular expression using https?://(www.)?(\w+)(\.\w+). Pleaso note that the group contains the plus sign as well.
+ * 
  */
 public class RegexInUse {
     
