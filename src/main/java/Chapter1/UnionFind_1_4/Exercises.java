@@ -1,5 +1,9 @@
+import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Random;
+import java.util.Set;
 import java.util.Stack;
+import java.util.TreeSet;
 import java.util.stream.IntStream;
 
 class Eight{
@@ -180,4 +184,87 @@ class Fifteen{
      * For 8 nodes, 1 - 3 - 3 is the worst case. This is because if paths were of depth 2, we would have a total
      * of 3 * (2 + 1) + 1 links, whereas with the binary tree we have 2 * (3 + 2 + 1) + 1 paths, which is worse!
      */
+}
+
+class Seventeen{
+    /**
+     * To check that every number is connected, we check the connection of every element with 0.
+     */
+    class ErdosRenyi{
+        int N;
+        QuickUnion union;
+
+        ErdosRenyi(QuickUnion union){
+            
+        }
+
+        public void start(){
+            this.N = Integer.parseInt(System.console().readLine());
+            this.union = new QuickUnion(N);
+            
+            Random rand_val = new Random();
+            while (check_connections()) {
+                union.union(rand_val.nextInt(N), rand_val.nextInt(N));
+            }
+        }
+
+        boolean check_connections(){
+            if (union.component == N) return false;
+
+            boolean notConnected = false;
+            for (int i = 1; i < N & notConnected; i++){
+                notConnected = union.connected(0, i);
+            }
+
+            return notConnected;
+        }
+    }
+}
+
+class Eighteen{
+    /**
+     * Ok. From now on, whenever someone says randomly access a series of items, we're going to use random bags, 
+     * unless stated otherwise! If not using apache common library, we can find an implementation over the internet.
+     * Let's try something new here. We can generate a set for each index i, then pair the sets together, and then
+     * return the resulting set. But this can't be done because of the stupid JRE6.
+     */
+    class Pair{
+        int p;
+        int q;
+
+        Pair(int p, int q){ this.p = p; this.q = q;}
+    }
+    public Set<Pair> generate_grids(int N){
+        TreeSet<Pair> pairs = new TreeSet<>();
+        
+        IntStream.range(0,N-1).foreach(i -> {IntStream.range(0,N-1).foreach(j->pairs.add(new Pair(i,j)))});
+    }
+
+}
+
+class Twenty{
+    /**
+     * We'll use an array list. We'll assume that the user is a good boy, and does not give
+     * repeated sites, or search for non-existent components. The problem however is that with this approach,
+     * we have to search the list to find the element. Several suggestions come to mind. One would be to 
+     * use a dictionary, which keeps the site together with the component id. 
+     * Other would be to add up sites up until that site name, and use another list to keep until that point.
+     * We may also define auxiliary pair classes. But these latter ones are not very helpful.
+     * Another solution is to just use an array and resize.
+     */
+    LinkedList<Integer> list;
+    int component;
+
+    Twenty(){
+        list = new LinkedList<>();
+
+    }
+
+    void addComponent(int p){
+        list.add(p);
+    }
+
+    int find(){
+        
+    }
 }
