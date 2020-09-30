@@ -9,6 +9,8 @@ package Chapter2.ElementarySorts_1;
  * order of the elements in the array.
  * 
  * It is however interesting that the number of array access is linear with this method.
+ * 
+ * Note that we can salvage one index by writing the first index with i < a.length - 1, because the last index is never compared.
  */
 public class SelectionSort_2 {
     public static void sort(Comparable[] a) {
@@ -23,6 +25,7 @@ public class SelectionSort_2 {
     }
     
     private static void exch(Comparable[] a, int i, int j) {
+        // Maybe we should add if (i==j) return;
         Comparable t = a[i];
         a[i] = a[j];
         a[j] = t;
