@@ -32,7 +32,10 @@ package Chapter5.RegularExpressions_5;
  * means dash, otherwise, a-z means range of from a to z. We can use special chars inside as well.
  * [^] - Not matches char set.
  * | - Either or
- * () Matches Group. We can use special chars inside as well.
+ * () Matches Group. We can use special chars inside as well. Each group has an index, starting from 1 (usually $1 or \1). We can for
+ * example replace a group with what we desire, or extract that group. Example (\w\d) means a group of char. and digit (\w+) means a group
+ * of at least one char. If I wanted to search for + in a group, I can write ([+]) for example. An empty paranthesis means any char. (^) means
+ * beginning of string.
  * 
  * Quantifiers:
  * * Zero or more
